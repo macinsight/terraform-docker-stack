@@ -19,6 +19,10 @@ resource "docker_container" "netbox" {
     value = "Host(\"netbox.macinsight.io\")"
   }
   labels {
+    label = "traefik.http.routers.netbox.entrypoints"
+    value = "web"
+  }
+  labels {
     label = "traefik.http.services.netbox.loadbalancer.server.port"
     value = "80"
   }
