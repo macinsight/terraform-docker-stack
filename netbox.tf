@@ -46,7 +46,7 @@ resource "docker_container" "netbox" {
   ]
   volumes {
     volume_name = docker_volume.netbox_data.name
-    conainer_path = "/config"
+    container_path = "/config"
   }
 }
 
