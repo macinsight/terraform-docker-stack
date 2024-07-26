@@ -20,7 +20,7 @@ resource "docker_container" "netbox" {
   }
   labels {
     label = "traefik.http.routers.netbox.entrypoints"
-    value = "web"
+    value = "http" 
   }
   labels {
     label = "traefik.http.services.netbox.loadbalancer.server.port"
