@@ -32,6 +32,10 @@ resource "docker_container" "netbox" {
   }
 }
 
+  networks_advanced {
+    name = docker_network.netbox.name
+  }
+}
 resource "docker_network" "netbox" {
   name = "netbox_internal"
 }
