@@ -7,10 +7,6 @@ resource "docker_container" "redis" {
   name  = "redis_container"
   restart = "always"
 
-  env = [
-    "REDIS_PASSWORD=${local.redis_password}"
-  ]
-
   volumes {
     volume_name    = docker_volume.redis.name
     container_path = "/data"

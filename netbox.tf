@@ -37,7 +37,6 @@ resource "docker_container" "netbox" {
   }
 
   env = [
-  "REDIS_PASSWORD=${local.redis_password}",
   "REDIS_HOST=redis_container",
   "DB_HOST=postgres_container",
   "DB_USER=${local.postgres_user}",
