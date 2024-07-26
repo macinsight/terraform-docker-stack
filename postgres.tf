@@ -43,5 +43,6 @@ resource "null_resource" "initialize_postgresql" {
       POSTGRES_USER  = var.DB_USER
       POSTGRES_PASSWORD = var.DB_PASSWORD
       DB_NAME        = var.DB_NAME
+    }
   }
 }
