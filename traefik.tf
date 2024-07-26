@@ -22,8 +22,9 @@ resource "docker_container" "traefik" {
     container_path = "/etc/traefik/traefik.yml"
   }
 
-  labels = {
-    "traefik.enable" = "true"
+  labels {
+    label = "traefik.enable"
+    value = true
   }
 
   networks_advanced {
