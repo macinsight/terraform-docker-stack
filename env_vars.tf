@@ -1,20 +1,23 @@
-data "external" "env_vars" {
-  program = ["bash", "-c", "set -o allexport; source .env; env"]
+provider "template" {}
 
-  # Use the `env` attribute to specify the variables you want to read
-  # This will be a map of the environment variables
-  result = {
-    POSTGRES_USER    = "POSTGRES_USER"
-    POSTGRES_PASSWORD = "POSTGRES_PASSWORD"
-    POSTGRES_DB      = "POSTGRES_DB"
-    REDIS_PASSWORD   = "REDIS_PASSWORD"
+data "local_file" "env_file" {
+  filename = "${path.module}/.env"
+}
+
+data "template_file" "env_vars" {
+  template = data.local_file.env_file.content
+  vars = {
+    POSTGRES_USER    = regex("(?m)^POSTGRES_USER=(.*)$", data.local_file.env_file.content)[0]
+    POSTGRES_PASSWORD = regex("(?m)^POSTGRES_PASSWORD=(.*)$", data.local_file.env_file.content)[0]
+    POSTGRES_DB      = regex("(?m)^POSTGRES_DB=(.*)$", data.local_file.env_file.content)[0]
+    REDIS_PASSWORD   = regex("(?m)^REDIS_PASSWORD=(.*)$", data.local_file.env_file.content)[0]
   }
 }
 
 locals {
-  postgres_user     = data.external.env_vars.result["POSTGRES_USER"]
-  postgres_password = data.external.env_vars.result["POSTGRES_PASSWORD"]
-  postgres_db       = data.external.env_vars.result["POSTGRES_DB"]
-  redis_password    = data.external.env_vars.result["REDIS_PASSWORD"]
+  postgres_user     = data.template_file.env_vars.vars["POSTGRES_USER"]
+  postgres_password = data.template_file.env_vars.vars["POSTGRES_PASSWORD"]
+  postgres_db       = data.template_file.env_vars.vars["POSTGRES_DB"]
+  redis_password    = data.template_file.env_vars.vars["REDIS_PASSWORD"]
 }
 

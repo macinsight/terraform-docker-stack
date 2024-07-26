@@ -8,8 +8,8 @@ terraform {
       source = "kreuzwerker/docker"
       version = " ~> 3.0.2"
     }
-    external = {
-      source = "hashicorp/external"
+    template = {
+      source = "hashicorp/template"
       version = "~> 2.0"
     }
   }
