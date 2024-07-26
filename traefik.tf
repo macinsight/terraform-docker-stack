@@ -1,4 +1,4 @@
-resource "docker_network" "traefik_network" {
+resource "docker_network" "traefik" {
   name = "traefik"
 }
 
