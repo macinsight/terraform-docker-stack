@@ -3,6 +3,6 @@ resource "docker_image" "netbox" {
 }
 
 resource "docker_container" "netbox" {
-  image = docker_image.netbox.latest
+  image = docker_image.netbox.image_id
   name  = "netbox"
 }
