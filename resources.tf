@@ -16,7 +16,7 @@ resource "docker_container" "netbox" {
   }
   labels {
     label = "traefik.http.routers.netbox.rule"
-    value = "Host(\"${docker_container.netbox.name}.macinsight.io\")"
+    value = "Host(\"netbox.macinsight.io\")"
   }
   labels {
     label = "traefik.http.services.netbox.loadbalancer.server.port"
