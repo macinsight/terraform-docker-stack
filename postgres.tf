@@ -25,7 +25,7 @@ resource "docker_container" "postgres" {
 
 
   networks_advanced {
-    name = docker_network.netbox.name
+    name = docker_network.traefik.name
   }
 }
 

@@ -31,11 +31,6 @@ resource "docker_container" "netbox" {
     name = docker_network.traefik_network.name
   }
 
-
-  networks_advanced {
-    name = docker_network.netbox.name
-  }
-
   env = [
   "REDIS_HOST=redis_container",
   "DB_HOST=postgres_container",
