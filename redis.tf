@@ -9,7 +9,7 @@ resource "docker_container" "redis" {
 
   volumes {
     volume_name    = docker_volume.redis.name
-    container_path = "/data"
+    container_path = "/usr/local/etc/redis/"
   }
 
 
