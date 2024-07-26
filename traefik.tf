@@ -21,6 +21,20 @@ resource "docker_container" "traefik" {
     label = "traefik.enable"
     value = true
   }
+  labels {
+    label = "traefik.http.routers.myrouter.rule"
+    value = "Host(`macinsight.io`)"
+  }
+
+  labels {
+    label = "traefik.http.routers.myrouter.entrypoints"
+    value = "web"
+  }
+
+  labels {
+    label = "traefik.http.services.myservice.loadbalancer.server.port"
+    value = "80"
+  }
 
   networks_advanced {
     name = docker_network.traefik_network.name
