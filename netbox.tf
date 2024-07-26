@@ -7,7 +7,7 @@ resource "docker_container" "netbox" {
   name  = "netbox"
   
   ports {
-    internal = 80
+    internal = 8000
   }
 
   labels {
