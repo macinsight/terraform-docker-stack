@@ -10,10 +10,17 @@ resource "docker_container" "netbox" {
     internal = 80
   }
 
-  labels = {
-    "traefik.enable"                      = "true"
-    "traefik.http.routers.netbox.rule"    = "Host(\"${docker_container.netbox.name}.macinsight.io\")"
-    "traefik.http.services.netbox.loadbalancer.server.port" = "80"
+  labels {
+    label = "traefik.enable"
+    value = true
+  }
+  labels {
+    label = "traefik.http.routers.netbox.rule"
+    value = "Host(\"${docker_container.netbox.name}.macinsight.io\")"
+  }
+  labels {
+    label = "traefik.http.services.netbox.loadbalancer.server.port"
+    value = "80"
   }
 
   networks_advanced {
