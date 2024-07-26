@@ -42,7 +42,7 @@ resource "docker_container" "netbox" {
   "DB_USER=${local.postgres_user}",
   "DB_PASSWORD=${local.postgres_password}",
   "DB_NAME=netbox",
-  "REDIS_PASSWORD=${redis_password}"
+  "REDIS_PASSWORD=${local.redis_password}"
   ]
   volumes {
     volume_name = docker_volume.netbox_data.name
