@@ -10,7 +10,6 @@ data "template_file" "env_vars" {
     POSTGRES_USER    = regex("(?m)^POSTGRES_USER=(.*)$", data.local_file.env_file.content)[0]
     POSTGRES_PASSWORD = regex("(?m)^POSTGRES_PASSWORD=(.*)$", data.local_file.env_file.content)[0]
     POSTGRES_DB      = regex("(?m)^POSTGRES_DB=(.*)$", data.local_file.env_file.content)[0]
-    REDIS_PASSWORD   = regex("(?m)^REDIS_PASSWORD=(.*)$", data.local_file.env_file.content)[0]
   }
 }
 
@@ -18,6 +17,5 @@ locals {
   postgres_user     = data.template_file.env_vars.vars["POSTGRES_USER"]
   postgres_password = data.template_file.env_vars.vars["POSTGRES_PASSWORD"]
   postgres_db       = data.template_file.env_vars.vars["POSTGRES_DB"]
-  redis_password    = data.template_file.env_vars.vars["REDIS_PASSWORD"]
 }
 
