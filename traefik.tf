@@ -9,8 +9,10 @@ resource "docker_container" "traefik" {
   command = [
     "--api.insecure=true",
     "--api.dashboard=true",
-    "--providers.docker=true"
+    "--providers.docker=true",
+    "--log.level=DEBUG"
   ]
+
   volumes {
     container_path = "/var/run/docker.sock"
     host_path = "/var/run/docker.sock"
