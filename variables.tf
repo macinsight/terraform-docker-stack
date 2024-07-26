@@ -12,7 +12,7 @@ variable "domain" {
 
 resource "cloudflare_record" "netbox" {
   zone_id = var.zone_id
-  name = "netbox"
+  name = docker_container.netbox.name
   type = "A"
   value = "188.245.48.91"
 }
