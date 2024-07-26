@@ -6,7 +6,15 @@ resource "docker_container" "traefik" {
   name  = "traefik"
   image = "traefik:latest"
   restart = "always"
-
+  command = [
+    "--api.insecure=true --providers.docker",
+    "--api.dashboard=true"
+  ]
+  volumes {
+    container_path = "/var/run/docker.sock"
+    host_path = "/var/run/docker.sock"
+    read_only = true
+  }
   ports {
     internal = 80
     external = 80
@@ -28,7 +36,7 @@ resource "docker_container" "traefik" {
 
   labels {
     label = "traefik.http.routers.api.rule"
-    value = "Host(\\`traefik.macinsight.io\\`) && (PathPrefix(\\`/api\\`) || PathPrefix(\\`/dashboard\\`))"
+    value = "Host(\`traefik.macinsight.io\`) && (PathPrefix(\`/api\`) || PathPrefix(\`/dashboard\`))"
   }
   labels {
     label = "traefik.http.routers.api.service"
