@@ -4,7 +4,7 @@ resource "docker_network" "traefik_network" {
 
 resource "docker_container" "traefik" {
   name  = "traefik"
-  image = "traefik:v2.5"
+  image = "traefik:latest"
   restart = "always"
 
   ports {
