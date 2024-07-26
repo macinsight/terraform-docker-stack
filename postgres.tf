@@ -32,7 +32,3 @@ resource "docker_container" "postgres" {
 resource "docker_volume" "postgres" {
   name = "netbox_postgres_volume"
 }
-
-resource "postgresql_database" "postgres" {
-  name              = local.postgres_db
-}
