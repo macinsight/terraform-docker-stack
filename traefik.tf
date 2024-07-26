@@ -30,10 +30,6 @@ resource "docker_container" "traefik" {
     label = "traefik.enable"
     value = true
   }
-  labels {
-    label = "traefik.http.routers.myrouter.rule"
-    value = "Host(`macinsight.io`)"
-  }
 
   labels {
     label = "traefik.http.routers.api.rule"
@@ -45,14 +41,9 @@ resource "docker_container" "traefik" {
   }
 
   labels {
-    label = "traefik.api.insecure"
-    value = true
+    label = "traefik.entryPoints.web.address"
+    value = ":80"
   }
-  labels {
-    label = "traefik.api.debug"
-    value = true
-  }
-
   networks_advanced {
     name = docker_network.traefik_network.name
   }
