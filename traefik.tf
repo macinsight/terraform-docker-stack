@@ -34,6 +34,15 @@ resource "docker_container" "traefik" {
     label = "traefik.http.routers.api.service"
     value = "api@internal"
   }
+
+  labels {
+    label = "traefik.api.insecure"
+    value = true
+  }
+  labels {
+    label = "traefik.api.debug"
+    value = true
+  }
   labels {
     label = "traefik.http.routers.myrouter.entrypoints"
     value = "web"
