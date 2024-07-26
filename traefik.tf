@@ -7,7 +7,7 @@ resource "docker_container" "traefik" {
   image = "traefik:latest"
   restart = "always"
   command = [
-    "--api.insecure=true ",
+    "--api.insecure=true",
     "--api.dashboard=true"
   ]
   volumes {
