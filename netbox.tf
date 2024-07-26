@@ -31,3 +31,6 @@ resource "docker_container" "netbox" {
     name = docker_network.traefik_network.name
   }
 }
+
+resource "docker_network" "netbox" {
+}
