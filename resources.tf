@@ -1,5 +1,5 @@
 resource "docker_image" "netbox" {
-  name = "netboxcommunity/netbox:latest"
+  name = "containous/whoami"
 }
 
 resource "docker_container" "netbox" {
