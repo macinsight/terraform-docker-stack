@@ -37,7 +37,7 @@ resource "docker_container" "traefik" {
 
   labels {
     label = "traefik.http.routers.api.rule"
-    value = "Host(\\`traefik.macinsight.io\\`) && (PathPrefix(\\`/api\\`) || PathPrefix(\\`/dashboard\\`))"
+    value = "Host(`traefik.macinsight.io`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
   }
   labels {
     label = "traefik.http.routers.api.service"
