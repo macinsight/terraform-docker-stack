@@ -1,5 +1,5 @@
 resource "docker_image" "netbox" {
-  name = "netbox:latest"
+  name = "netboxcommunity/netbox:latest"
 }
 
 resource "docker_container" "netbox" {
