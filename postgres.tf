@@ -19,7 +19,7 @@ resource "docker_container" "postgres" {
   ]
 
   volumes {
-    host_path      = "/path/to/local/postgres/data"
+    volume_name = docker_volume.postgres.name
     container_path = "/var/lib/postgresql/data"
   }
 
@@ -30,4 +30,5 @@ resource "docker_container" "postgres" {
 }
 
 resource "docker_volume" "postgres" {
+  name = "netbox_postgres_volume"
 }

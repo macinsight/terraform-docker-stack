@@ -33,4 +33,5 @@ resource "docker_container" "netbox" {
 }
 
 resource "docker_network" "netbox" {
+  name = "netbox_internal"
 }

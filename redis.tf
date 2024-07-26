@@ -12,7 +12,7 @@ resource "docker_container" "redis" {
   ]
 
   volumes {
-    volume_name    = docker_volume.redis_data.name
+    volume_name    = docker_volume.redis.name
     container_path = "/data"
   }
 
@@ -23,4 +23,5 @@ resource "docker_container" "redis" {
 }
 
 resource "docker_volume" "redis" {
+  name = "netbox_redis_volume"
 }
