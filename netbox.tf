@@ -1,5 +1,5 @@
 resource "docker_image" "netbox" {
-  name = "netboxcommunity/netbox"
+  name = "linuxserver/netbox"
 }
 
 resource "docker_container" "netbox" {
