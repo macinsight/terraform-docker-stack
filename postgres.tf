@@ -32,3 +32,15 @@ resource "docker_container" "postgres" {
 resource "docker_volume" "postgres" {
   name = "netbox_postgres_volume"
 }
+
+resource "null_resource" "initialize_postgresql" {
+  depends_on = [docker_container.postgres]
+
+  provisioner "local-exec" {
+    command = "bash postgresql_init.sh"
+    environment = {
+      DB_HOST        = "localhost"
+      POSTGRES_USER  = var.DB_USER
+      POSTGRES_PASSWORD = var.DB_PASSWORD
+      DB_NAME        = var.DB_NAME
+    }
