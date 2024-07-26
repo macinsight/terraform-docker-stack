@@ -8,7 +8,8 @@ resource "docker_container" "traefik" {
   restart = "always"
   command = [
     "--api.insecure=true",
-    "--api.dashboard=true"
+    "--api.dashboard=true",
+    "--providers.docker=true"
   ]
   volumes {
     container_path = "/var/run/docker.sock"
