@@ -53,7 +53,7 @@ resource "docker_container" "traefik" {
     value = true
   }
   labels {
-    label = "traefik.http.routers.myrouter.entrypoints"
+    label = "traefik.http.routers.netbox.entrypoints"
     value = "web"
   }
 
