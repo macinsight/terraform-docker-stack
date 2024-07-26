@@ -35,7 +35,7 @@ resource "docker_container" "netbox" {
   networks_advanced {
     name = docker_network.netbox.name
   }
-  
+
   env = [
   "REDIS_PASSWORD=${local.redis_password}",
   "REDIS_HOST=redis_container",
@@ -44,9 +44,16 @@ resource "docker_container" "netbox" {
   "DB_PASSWORD=${local.postgres_password}",
   "DB_NAME=netbox"
   ]
+  volumes {
+    volume_name = docker_volume.netbox_data.name
+    conainer_path = "/config"
+  }
 }
 
 resource "docker_network" "netbox" {
   name = "netbox_internal"
 }
 
+resource "docker_volume" "netbox_data" {
+  name = "netbox_data"
+}
