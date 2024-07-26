@@ -14,4 +14,5 @@ resource "cloudflare_record" "netbox" {
   zone_id = var.zone_id
   name = "netbox"
   type = "A"
+  value = "188.245.48.91"
 }
