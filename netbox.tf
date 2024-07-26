@@ -24,7 +24,7 @@ resource "docker_container" "netbox" {
   }
   labels {
     label = "traefik.http.services.netbox.loadbalancer.server.port"
-    value = "80"
+    value = "8000"
   }
 
   networks_advanced {
