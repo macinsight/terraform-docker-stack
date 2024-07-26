@@ -27,6 +27,14 @@ resource "docker_container" "traefik" {
   }
 
   labels {
+    label = "traefik.http.routers.api.rule"
+    value = "Host(\\`traefik.example.com\\`) && (PathPrefix(\\`/api\\`) || PathPrefix(\\`/dashboard\\`))"
+  }
+  labels {
+    label = "traefik.http.routers.api.service"
+    value = "api@internal"
+  }
+  labels {
     label = "traefik.http.routers.myrouter.entrypoints"
     value = "web"
   }
