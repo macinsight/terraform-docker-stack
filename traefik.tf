@@ -17,11 +17,6 @@ resource "docker_container" "traefik" {
     external = 8080
   }
 
-  volumes {
-    volume_name    = "traefik"
-    container_path = "/etc/traefik/traefik.yml"
-  }
-
   labels {
     label = "traefik.enable"
     value = true
