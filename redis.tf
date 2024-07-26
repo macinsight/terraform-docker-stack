@@ -3,7 +3,7 @@ resource "docker_image" "redis" {
 }
 
 resource "docker_container" "redis" {
-  image = docker_image.redis.latest
+  image = docker_image.redis.image_id
   name  = "redis_container"
   restart = "always"
 

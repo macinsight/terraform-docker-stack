@@ -3,7 +3,7 @@ resource "docker_image" "postgres" {
 }
 
 resource "docker_container" "postgres" {
-  image = docker_image.postgres.latest
+  image = docker_image.postgres.image_id
   name  = "postgres_container"
   restart = "always"
 
