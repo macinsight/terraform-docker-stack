@@ -47,6 +47,6 @@ resource "docker_container" "traefik" {
     value = ":80"
   }
   networks_advanced {
-    name = docker_network.traefik_network.name
+    name = docker_network.traefik.name
   }
 }

@@ -28,7 +28,7 @@ resource "docker_container" "netbox" {
   }
 
   networks_advanced {
-    name = docker_network.traefik_network.name
+    name = docker_network.traefik.name
   }
 
   env = [
