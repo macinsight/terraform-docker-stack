@@ -13,4 +13,5 @@ variable "domain" {
 resource "cloudflare_record" "netbox" {
   zone_id = var.zone_id
   name = "netbox"
+  type = "A"
 }
