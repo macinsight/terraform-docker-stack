@@ -40,9 +40,9 @@ resource "null_resource" "initialize_postgresql" {
     command = "bash postgresql_init.sh"
     environment = {
       DB_HOST        = "localhost"
-      POSTGRES_USER  = var.DB_USER
-      POSTGRES_PASSWORD = var.DB_PASSWORD
-      DB_NAME        = var.DB_NAME
+      POSTGRES_USER  = var.POSTGRES_USER
+      POSTGRES_PASSWORD = var.POSTGRES_PASSWORD
+      DB_NAME        = var.POSTGRES_DB
     }
   }
 }
